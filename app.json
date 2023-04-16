@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "RNapp-clone1IG",
+    "slug": "RNapp-clone1IG",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "RNapp-clone1IG"
+}
