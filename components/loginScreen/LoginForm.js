@@ -5,7 +5,7 @@ import { Button } from 'react-native-elements';
 import  Validator  from 'email-validator';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import firebase from '../../firebase';
+ //import firebase from '../../firebase';
 
 const LoginForm = ({navigation}) => {
     const LoginFormSchema = Yup.object().shape({
@@ -15,20 +15,20 @@ const LoginForm = ({navigation}) => {
 
     })
 
-    const onLogin = async(email,password) => {
-        try{
-            await firebase.auth().signInWithEmailAndPassword(email,password)
-            console.log("fb login successfull",email,password)
-        }catch(error){
-            Alert.alert(error.message)
-        }
-    }
+    // const onLogin = async(email,password) => {
+    //     try{
+    //         await firebase.auth().signInWithEmailAndPassword(email,password)
+    //         console.log("fb login successfull",email,password)
+    //     }catch(error){
+    //         Alert.alert(error.message)
+    //     }
+    // }
   return (
     <View style={styles.wrapper} >
     <Formik
     initialValues={{email:'',password:''}}
     onSubmit={values => {
-        onLogin(values.email,values.password)
+        console.log(values)
     }}
     validationSchema={LoginFormSchema}
     validateOnMount={true}  

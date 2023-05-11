@@ -13,6 +13,7 @@
     "@react-navigation/stack": "^6.3.16",
     "email-validator": "^2.0.4",
     "expo": "~48.0.11",
+    "expo-firebase": "^0.0.0-alpha.0",
     "expo-splash-screen": "~0.18.1",
     "expo-status-bar": "~1.4.4",
     "firebase": "^9.21.0",
