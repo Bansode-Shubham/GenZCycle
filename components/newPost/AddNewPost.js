@@ -1,24 +1,26 @@
 import { View, Text,StyleSheet,Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import FormikPostUploader from './FormikPostUploader'
 
-const AddNewPost = () => {
+const AddNewPost = ({navigation}) => {
   return (
     <View style={styles.container}>
-        <Header />
+        <Header navigation={navigation}/>
+        <FormikPostUploader navigation={navigation}/>
     </View>
    
   )
 }
 
-const Header = () => (
+const Header = ({navigation}) => (
     <View style={styles.headContainer}>
-    <TouchableOpacity>
-    <Image source={{
-        uri:'https://cdn.iconscout.com/icon/free/png-256/free-back-arrow-1767523-1502427.png'}} 
+    <TouchableOpacity onPress={() => navigation.goBack()}>
+    <Image 
+        source={{uri:'https://cdn.iconscout.com/icon/free/png-256/free-back-arrow-1767523-1502427.png'}} 
         style={{width:30,height:30}}
     />
     </TouchableOpacity>
-      <Text style={styles.headerText}>New Post</Text>
+      <Text style={styles.headerText}>NEW POST</Text>
       <Text></Text>
     </View>
 )
@@ -37,8 +39,8 @@ const styles = StyleSheet.create({
         fontSize:20,
         marginRight:25,
 
-
-    }
+    },
 
 })
+
 export default AddNewPost

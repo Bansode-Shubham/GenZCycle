@@ -5,12 +5,12 @@ import LoginForm from '../components/loginScreen/LoginForm'
 const LOGO = 'https://static.vecteezy.com/system/resources/previews/015/393/860/non_2x/creative-bicycle-with-cycling-race-stylized-symbol-logo-design-concept-illustration-vector.jpg'
 
 
-const LoginScreen = () => (
+const LoginScreen = ({navigation}) => (
     <View style={styles.container}>
     <View style={styles.logoContainer}>
         <Image source={{uri:LOGO ,height:200,width:200}} />
 </View>
-<LoginForm />
+<LoginForm navigation={navigation}/>
 </View>
      )
 const styles=StyleSheet.create({

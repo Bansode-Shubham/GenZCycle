@@ -1,24 +1,34 @@
-import { View, Text, TextInput,StyleSheet, Pressable, TouchableOpacity } from 'react-native'
-import React ,{ useState} from 'react'
-import { Button } from 'react-native-elements'
+import { View,Alert , Text, TextInput,StyleSheet, Pressable, TouchableOpacity } from 'react-native';
+
+import React ,{ useState} from 'react';
+import { Button } from 'react-native-elements';
 import  Validator  from 'email-validator';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+import firebase from '../../firebase';
 
-
-const LoginForm = () => {
+const LoginForm = ({navigation}) => {
     const LoginFormSchema = Yup.object().shape({
         email:Yup.string().email().required('An email is requried'),
         password:Yup.string()
         .required().min(6,'Your password has to have at least 6 characters')
 
     })
+
+    const onLogin = async(email,password) => {
+        try{
+            await firebase.auth().signInWithEmailAndPassword(email,password)
+            console.log("fb login successfull",email,password)
+        }catch(error){
+            Alert.alert(error.message)
+        }
+    }
   return (
     <View style={styles.wrapper} >
     <Formik
     initialValues={{email:'',password:''}}
     onSubmit={values => {
-        console.log(values)
+        onLogin(values.email,values.password)
     }}
     validationSchema={LoginFormSchema}
     validateOnMount={true}  
@@ -73,10 +83,10 @@ disabled={!isValid}
       
       <View style={styles.signupContainer}>
       <Text>Don't have an account?</Text>
-      <TouchableOpacity>
+      <TouchableOpacity
+       onPress={() => navigation.push('SignupScreen')}>
         <Text style={{color:'#6BB0F5'}}> Sign Up </Text>
       </TouchableOpacity>
-
       </View>
       </>
       )}

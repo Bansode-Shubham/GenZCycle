@@ -5,12 +5,12 @@ import SignupForm from '../components/signupScreen/SignupForm'
 const LOGO = 'https://static.vecteezy.com/system/resources/previews/015/393/860/non_2x/creative-bicycle-with-cycling-race-stylized-symbol-logo-design-concept-illustration-vector.jpg'
 
 
-const SignupScreen = () => (
+const SignupScreen = ({navigation}) => (
     <View style={styles.container}>
     <View style={styles.logoContainer}>
         <Image source={{uri:LOGO ,height:200,width:200}} />
 </View>
-<SignupForm />
+<SignupForm navigation={navigation} />
 </View>
      )
 const styles=StyleSheet.create({
